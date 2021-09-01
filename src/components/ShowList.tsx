@@ -14,6 +14,10 @@ function ShowList(): JSX.Element {
   const [filteredEpisodes, setFilteredEpisodes] =
     useState<IEpisode[]>(episodes);
 
+  const handleClear = () => {
+    setSelectedEpisode(undefined);
+  };
+
   useEffect(() => {
     const newFilteredEpisodes = episodes.filter(
       (episode) =>
@@ -39,13 +43,21 @@ function ShowList(): JSX.Element {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div></div>
-      <select>
-        {filteredEpisodes.map((episode: IEpisode, index) => (
-          <option key={index}>
+      <select
+        onChange={(e) =>
+          setSelectedEpisode(
+            episodes.filter((episode) => episode.name === e.target.value)[0]
+          )
+        }
+      >
+        {/* TODO: Find a better way to select a single episode in case of name clashes */}
+        {episodes.map((episode: IEpisode, index) => (
+          <option value={episode.name} key={index}>
             {getFullEpisodeNumber(episode) + ": " + episode.name}
           </option>
         ))}
       </select>
+      <button onClick={handleClear}>Clear selection</button>
       {filteredEpisodes.length !== episodes.length && (
         <p>
           Showing {filteredEpisodes.length} of {episodes.length} episodes

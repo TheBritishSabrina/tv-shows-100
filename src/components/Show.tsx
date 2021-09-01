@@ -13,7 +13,13 @@ function Show(props: IEpisode): JSX.Element {
       <h2>
         {props.name} - {getFullEpisodeNumber(props)}
       </h2>
-      <img src={props.image.medium} />
+      {props.image ? (
+        <img src={props.image.medium} />
+      ) : (
+        <p style={{ minWidth: 200 }}>
+          <i>No image available</i>
+        </p>
+      )}
       <p>{props.summary.slice(3, -4)}</p>
     </section>
   );
