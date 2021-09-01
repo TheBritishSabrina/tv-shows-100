@@ -1,6 +1,6 @@
 import { IEpisode } from "../interfaces/Episode";
 
-export default function getFullEpisodeNumber(props: IEpisode) {
+export default function getFullEpisodeNumber(props: IEpisode): string {
   const fullEpisodeNumber =
     "S" +
     (props.season < 10 ? "0" : "") +

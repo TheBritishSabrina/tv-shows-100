@@ -18,7 +18,9 @@ function ShowList(): JSX.Element {
     setSelectedEpisode(undefined);
   };
 
-  const showCode = "82"; // Game of Thrones
+  const showCode = "179";
+  // Game of Thrones = 82
+  // The Wire = 179
 
   useEffect(() => {
     fetch(`https://api.tvmaze.com/shows/${showCode}/episodes`)

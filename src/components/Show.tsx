@@ -14,7 +14,7 @@ function Show(props: IEpisode): JSX.Element {
         {props.name} - {getFullEpisodeNumber(props)}
       </h2>
       {props.image ? (
-        <img src={props.image.medium} />
+        <img src={props.image.medium} alt="Episode image" />
       ) : (
         <p style={{ minWidth: 200 }}>
           <i>No image available</i>
