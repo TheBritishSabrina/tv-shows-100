@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Show from "./Show";
 import episodes from "../episodes.json";
 import { IEpisode } from "../interfaces/Episode";
+import getFullEpisodeNumber from "../utils/EpisodeNumber";
 
 const listStyles = {
   display: "flex",
@@ -40,7 +41,9 @@ function ShowList(): JSX.Element {
       <div></div>
       <select>
         {filteredEpisodes.map((episode: IEpisode, index) => (
-          <option key={index}>{episode.name}</option>
+          <option key={index}>
+            {getFullEpisodeNumber(episode) + ": " + episode.name}
+          </option>
         ))}
       </select>
       {filteredEpisodes.length !== episodes.length && (

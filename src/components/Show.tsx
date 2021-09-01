@@ -1,4 +1,5 @@
 import { IEpisode } from "../interfaces/Episode";
+import getFullEpisodeNumber from "../utils/EpisodeNumber";
 
 const showStyles = {
   border: 10,
@@ -7,18 +8,10 @@ const showStyles = {
 };
 
 function Show(props: IEpisode): JSX.Element {
-  const fullEpisodeNumber =
-    "S" +
-    (props.season < 10 && "0") +
-    props.season +
-    "E" +
-    (props.number < 10 && "0") +
-    props.number;
-
   return (
     <section style={showStyles}>
       <h2>
-        {props.name} - {fullEpisodeNumber}
+        {props.name} - {getFullEpisodeNumber(props)}
       </h2>
       <img src={props.image.medium} />
       <p>{props.summary.slice(3, -4)}</p>
