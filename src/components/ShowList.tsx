@@ -39,9 +39,9 @@ function ShowList(): JSX.Element {
       />
       <div></div>
       <select>
-        {filteredEpisodes.map((episode: IEpisode) => {
-          <option value={episode.name}>{episode.name}</option>;
-        })}
+        {filteredEpisodes.map((episode: IEpisode, index) => (
+          <option key={index}>{episode.name}</option>
+        ))}
       </select>
       {filteredEpisodes.length !== episodes.length && (
         <p>
